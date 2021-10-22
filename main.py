@@ -1,17 +1,15 @@
-from flask import Flask
-from flask import jsonify
+from flask import Flask, jsonify
+
 app = Flask(__name__)
 
 @app.route('/')
 def hello():
     """Return a friendly HTTP greeting."""
-    print("I am inside hello world")
     return 'Hello World!'
 
-@app.route('/echo/<name>')
-def echo(name):
-    print(f"This was placed in the url: new-{name}")
-    val = {"new-name": name}
+@app.route('/name/<value>')
+def name(value):
+    val = {'value': value}
     return jsonify(val)
 
 
